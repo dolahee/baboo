@@ -18,7 +18,7 @@
                 </div>
                 <div class="modal-footer flex-nowrap p-0">
                     <button type="button" id="yesButton" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-right"><strong>Yes</strong></button>
-                    <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" data-bs-dismiss="modal">No</button>
+                    <button type="button" id="noButton" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" data-bs-dismiss="modal">No</button>
                 </div>
             </div>
         </div>
@@ -28,8 +28,12 @@
         <span class="visually-hidden">Loading...</span>
     </div>
 
-    <div style="display:none; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%)">
+    <div class="noText" style="display:none; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%)">
         아니잖아 바보야 ㅡㅡ
+    </div>
+
+    <div class="yesText" style="display:none; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%)">
+       4월 12일에 다시 보장 ♥
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -39,7 +43,7 @@
         document.getElementById('yesButton').addEventListener('click', function() {
             const modal = document.getElementById('modalChoice');
             const spinner = document.querySelector('.spinner-border');
-            const finalMessage = document.querySelector('div[style*="translate(-50%, -50%)"]');
+            const finalMessage = document.querySelector('.noText');
             
             modal.style.display = 'none'; 
             spinner.style.display = 'block'; 
@@ -49,6 +53,20 @@
                 finalMessage.style.display = 'block'; 
             }, 3000);
         });
+        document.getElementById('noButton').addEventListener('click', function() {
+            const modal = document.getElementById('modalChoice');
+            const spinner = document.querySelector('.spinner-border');
+            const yesText = document.querySelector('.yesText');
+            
+            modal.style.display = 'none'; 
+            spinner.style.display = 'block'; 
+            
+            setTimeout(() => {
+                spinner.style.display = 'none'; 
+                yesText.style.display = 'block'; 
+            }, 3000);
+        });
+
     </script>
 </body>
 </html>
